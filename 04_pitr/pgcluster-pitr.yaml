@@ -1,0 +1,16 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: pgcluster-pitr
+spec:
+  instances: 3
+
+  bootstrap:
+    recovery:
+      backup:
+        name: pgcluster-prod-backup
+      recoveryTarget:
+        targetTime: "2025-05-06 03:35:46.081583+00"
+
+  storage:
+    size: 1Gi
