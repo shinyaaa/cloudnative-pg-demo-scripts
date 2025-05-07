@@ -58,7 +58,7 @@ kubectl get cluster
 
 新規クラスタに接続し、`orders`テーブルが削除されていないことを確認します。
 ```bash
-kubectl exec -it pgcluster-pitr -- psql
+kubectl exec -it pgcluster-pitr-1 -- psql
 ```
 ```sql
 SELECT * FROM orders;
