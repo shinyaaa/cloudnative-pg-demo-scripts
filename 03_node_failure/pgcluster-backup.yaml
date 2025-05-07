@@ -1,0 +1,26 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: pgcluster-backup
+spec:
+  instances: 3
+
+  bootstrap:
+    recovery:
+      backup:
+        name: pgcluster-prod-backup
+
+  affinity:
+    enablePodAntiAffinity: true
+    topologyKey: kubernetes.io/hostname
+    podAntiAffinityType: required
+    nodeSelector:
+      cnds2025.com/role: postgres
+    tolerations:
+    - key: cnds2025.com/role
+      operator: Equal
+      value: postgres
+      effect: NoSchedule
+
+  storage:
+    size: 1Gi

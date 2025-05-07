@@ -1,0 +1,21 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: pgcluster-prod
+spec:
+  instances: 3
+
+  backup:
+    volumeSnapshot:
+      className: pgcluster-vsc
+    barmanObjectStore:
+      destinationPath: gs://cnds2025-03-node-failure
+      googleCredentials:
+        applicationCredentials:
+          name: backup-creds
+          key: gcsCredentials
+    retentionPolicy: 30d
+
+  storage:
+    storageClass: premium-rwo
+    size: 1Gi
