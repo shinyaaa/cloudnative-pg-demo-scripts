@@ -6,6 +6,8 @@ spec:
   instances: 3
 
   backup:
+    volumeSnapshot:
+      className: pgcluster-vsc
     barmanObjectStore:
       destinationPath: gs://cnds2025-04-pitr
       googleCredentials:
@@ -15,4 +17,5 @@ spec:
     retentionPolicy: 30d
 
   storage:
+    storageClass: premium-rwo
     size: 1Gi

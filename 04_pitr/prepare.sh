@@ -31,6 +31,7 @@ kubectl apply --server-side -f \
   https://raw.githubusercontent.com/cloudnative-pg/cloudnative-pg/release-1.25/releases/cnpg-1.25.1.yaml
 
 sleep 10
+kubectl apply -f volume-snapshot-class.yaml
 kubectl apply -f pgcluster-prod.yaml
 
 sleep 10

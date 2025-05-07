@@ -3,6 +3,6 @@ kind: Backup
 metadata:
   name: pgcluster-prod-backup
 spec:
-  method: barmanObjectStore
+  method: volumeSnapshot
   cluster:
     name: pgcluster-prod
